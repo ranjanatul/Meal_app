@@ -2,12 +2,47 @@
 <html>
 
 <head>
-	<title>Parcel Sandbox</title>
+	<title>Meal App</title>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="src/styles.css" />
 </head>
 
 <body>
-	<div id="app"></div>
+	<div id="app">
+		<div class="wrapper">
+			<ul class="navbar">
+				<li class="navbar-item">Home</li>
+				<li class="navbar-item">Meals</li>
+				<li class="navbar-item">Favourite</li>
+			</ul>
+			<div class="main">
+				<div class="main-content">
+					<div class="search-bar">
+						<form method="post">
+							<input type="text" name="mealName" id="mealName" placeholder="Type your meal here...">
+							<input type="submit" value="Find">
+							<div name="mealSelected" id="mealSelected"></div>
+						</form>
+					</div>
+					<div class="container"> 
+						<div class="result">
+							<h4>Start finding your meal.</h4>
+						</div>
+					</div>
+				</div>
+				<div class="sidebar">
+					<h3>Favourite Meals</h3>
+					<hr>
+					<ul id="favouriteMeal">
+						<li class="favourite-item">
+							Currently you don't have any items as Favourite!
+							Start adding
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="src/index.js">
 	</script>
