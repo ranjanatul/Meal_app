@@ -1,6 +1,7 @@
 const searchByMealName = document.getElementById('mealName');
 const mealSelected = document.getElementById('mealSelected');
 const favouriteMeal = document.getElementById('favouriteMeal');
+const submit = document.getElementById('submit');
 let result = [];
 let filteredResult = [];
 let favItems = []
@@ -28,10 +29,16 @@ window.addEventListener('load', function() {
 searchByMealName.addEventListener('keyup', function (event) {
   const info = event;
   debounce(info);
+});
+
+submit.addEventListener('click', function(event) {
+  debounce(event);
 })
 
 function debounce(event) {
-  const key = event.target.value;
+  event.preventDefault();
+  const mealName = document.getElementById('mealName').value;
+  const key = (event.target.type == 'text' && event.target.value) || mealName;
   if (key.length === 0) {
     mealSelected.innerHTML = '<option>Type to get suggestions</option>'; 
   }
