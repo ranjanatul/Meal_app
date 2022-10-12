@@ -5,6 +5,7 @@ const submit = document.getElementById('submit');
 let result = [];
 let filteredResult = [];
 let favItems = []
+// load one random dish while loading page.
 window.addEventListener('load', function() {
   const savedFavItems = JSON.parse(localStorage.getItem('fav'));
   if (savedFavItems && savedFavItems.length > 0) {
@@ -23,18 +24,19 @@ window.addEventListener('load', function() {
       favouriteMeal.append(li);
     });
   }
+  // fetch meal detail randomly
   mealDetail('https://www.themealdb.com/api/json/v1/1/random.php');
 })
-
+// event triggered once keyboard letter is pressed
 searchByMealName.addEventListener('keyup', function (event) {
   const info = event;
   debounce(info);
 });
-
+// event triggered once find button is clicked.
 submit.addEventListener('click', function(event) {
   debounce(event);
 })
-
+// function to fetch the searched letter
 function debounce(event) {
   event.preventDefault();
   const mealName = document.getElementById('mealName').value;
@@ -83,7 +85,7 @@ function fetchMealById({target}) {
     mealDetail(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
   }
 }
-
+// set the favorite meal and store it in localstorage
 function setFav({target}) {
   const {name, id} = target || {};
   if (name && id) {
@@ -104,7 +106,7 @@ function setFav({target}) {
     localStorage.setItem('fav', JSON.stringify(favItems));
 }
 }
-
+// open page once favourite item is clicked.
 function openpage({target}) {
   const {name, id} = target || {};
   if (name && id) {
